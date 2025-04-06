@@ -1,0 +1,24 @@
+# Exit container
+exit
+
+# List open
+docker ps
+
+# Build container
+docker build -t whisper-test .
+
+# Stop container
+docker stop whisper-test
+
+# Run container
+docker run -it -v "$(pwd):/audio" -v "$(pwd):/output" whisper-test /bin/bash
+
+PS:
+docker run -v "$(Get-Location).Path:/audio" -v "$(Get-Location).Path:/output" whisper-test
+CMD:
+docker run -v "%cd%:/audio" -v "%cd%:/output" whisper-test /audio/my_audio.m4a
+
+# Working:
+docker run -v "C:\Users\Kieran\Documents\Diary\transcriber\audio:/audio" -v "C:\Users\Kieran\Documents\Diary\transcriber\output:/output" whisper-test
+
+# Inside the container
